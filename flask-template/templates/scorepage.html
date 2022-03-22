@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Your results</h1>
+    {% if correct == True %}
+        <p> That's right! The capital is Oslo </p>
+    {% else %}
+        <p>
+            Sorry, that's not quite right.
+            <a href="/">Click here to go back and try</a>
+        </p>
+    {% endif %}
+
+    <br/>
+
+    <h2>Your Performance History</h2>
+    {% for capital in previous_corrects %}
+        <p> You get one point for knowing {{capital}} </p>
+    {% endfor %}
+
+    <h3>You have a total of {{ previous_corrects | length + correct }} points so far!</h3>     
+{% endblock %}

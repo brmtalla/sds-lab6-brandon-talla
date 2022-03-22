@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}US State Capitals Quiz{% endblock %}
+
+{% block body %}
+    <h1>Your results are as followed:</h1>
+        <ol>
+            {% for key, answer in answers.items() %}
+                {% if answer == True %}
+                    <p> {{ answer }} is indeed the capital of {{ state[key] }}! </p>
+                {% else %}
+                    <p> {{ answer }} is incorrect. The capital you entered should be {{state[key][0]}} </p>
+                {% endif %}
+            {% endfor %}
+        </ol>
+{% endblock %}
