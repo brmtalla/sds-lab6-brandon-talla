@@ -15,9 +15,13 @@
 # ---- YOUR APP STARTS HERE ----
 # -- Import section --
 from flask import Flask
+from flask import render_template
 # from flask import render_template
-# from flask import request
+from flask import request
+from flask import redirect
+from model import ansDict
 
+state_capitals = {"MD": "Annapolis", "NC": "Raleigh", "FL": "Tallahassee", "GA": "Atlanta", "TX": "Austin"}
 
 # -- Initialization section --
 app = Flask(__name__)
@@ -27,4 +31,17 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    return "hello world"
+    return render_template('index.html')
+
+@app.route('/results', methods=['GET', 'POST'])
+def results():
+    if request.method == 'GET':
+        return redirect('/index')
+
+    answers = {"MD": request.form['Maryland'], 
+                "NC": request.form['North Carolina'], 
+                "FL": request.form['Florida'], 
+                "TX": request.form['Texas'], 
+                "GA": request.form['Georgia']}
+    
+    return render_template('results.html', answers=ansDict(answers), states = state_capitals)

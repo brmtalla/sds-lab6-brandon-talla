@@ -12,3 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+def ansDict(answers):
+    res = dict()
+    capitals = {"MD": "Annapolis", "NC": "Raleigh", "FL": "Tallahassee", "GA": "Atlanta", "TX": "Austin"}
+
+    for state, answer in answers.items():
+        res[state] = capitals[state] == answer.lower()   
+    
+    return res

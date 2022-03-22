@@ -14,3 +14,18 @@
  * limitations under the License.
  */
 
+body{
+    background: lavender;
+}
+
+body h1{
+    color: black;
+    margin-left: 25%;
+    margin-top: 15%;
+}
+
+body form{
+    margin-left: 10%;
+    
+    
+}
